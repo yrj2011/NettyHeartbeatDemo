@@ -70,6 +70,18 @@ public class Client {
      * @throws InterruptedException
      */
     public static void doConnect() throws InterruptedException {
-        ch = bootstrap.connect("127.0.0.1", 20000).sync().channel();
+        Integer port = 20000;
+        try{
+            port = Integer.parseInt(System.getProperty("port"));
+        }catch (Exception e){
+
+        }
+        String ip = "127.0.0.1";
+        try{
+            ip = System.getProperty("ip");
+        }catch (Exception e){
+
+        }
+        ch = bootstrap.connect(ip, port).sync().channel();
     }
 }

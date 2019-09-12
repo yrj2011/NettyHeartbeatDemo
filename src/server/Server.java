@@ -17,6 +17,12 @@ import io.netty.handler.timeout.IdleStateHandler;
  */
 public class Server {
     public static void main(String[] args) {
+        Integer port = 20000;
+        try{
+            port = Integer.parseInt(System.getProperty("port"));
+        }catch (Exception e){
+
+        }
         NioEventLoopGroup acceptorGroup = new NioEventLoopGroup(1);
         NioEventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
